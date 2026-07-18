@@ -102,6 +102,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(3001, () => {
+app.listen(process.env.PORT, () => {
     console.log('Bracket server running on port 3001');
 });
