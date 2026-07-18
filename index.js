@@ -15,10 +15,6 @@ const manager = new BracketsManager(storage);
 app.post('/api/create', async (req, res) => {
     try {
         const { name, tournamentId, type, seeding, settings } = req.body;
-        await manager.get.currentStage(tournamentId).then(value =>{
-            if(value === null)
-                res.json("Tournament with that ID already exist");
-        })
 
         await manager.create.stage({
             tournamentId: tournamentId,
