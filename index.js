@@ -87,6 +87,20 @@ app.post('/api/clear', async (req,res)=>{
     res.json('OK')
 
 })
+// 2. The Catch-All 404 Middleware (Must be down here)
+app.use((req, res, next) => {
+  res.status(404).json({
+    status: 'fail',
+    message: `Can't find ${req.originalUrl} on this server!`
+  });
+});
+
+// 3. Your global error handler (Optional, but best practice)
+app.use((err, req, res, next) => {
+  res.status(err.status || 500).json({
+    message: err.message || 'Internal Server Error'
+  });
+});
 
 app.listen(3001, () => {
     console.log('Bracket server running on port 3001');
