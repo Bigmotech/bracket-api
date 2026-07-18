@@ -11,6 +11,9 @@ app.use(express.json());
 
 const storage = new JsonDatabase();
 const manager = new BracketsManager(storage);
+app.get('/', (req,res)=>{
+    res.send("Hello")
+})
 
 app.post('/api/create', async (req, res) => {
     try {
