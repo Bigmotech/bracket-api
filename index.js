@@ -62,17 +62,18 @@ app.put('/api/update', async (req, res)=>{
     let roundOffset = round - 1;
     let stage = await manager.get.currentStage(id);
     let values = await manager.get.stageData(stage.id);
+    console.log(stage)
     
     let winnerBracketOffset = values.round.filter(round => round.group_id == 0).length
-    
+    console.log(winnerBracketOffset)
     if(group > 0)
         roundOffset += winnerBracketOffset
-    
-    console.log(stage.id);
+    console.log(roundOffset)
     let data = (await manager.get.stageData(stage.id)).match.find(match => {
         return match.group_id == groupOffset && match.number == matchNumber && match.round_id == roundOffset
 
     })
+    console.log(data);
     manager.update.match({
 
         id: data.id,
