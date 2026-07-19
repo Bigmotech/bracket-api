@@ -63,8 +63,8 @@ app.put('/api/update', async (req, res)=>{
     console.log("This is after id")
     let groupOffset = Number.parseInt(group) - 1;
     let roundOffset = round - 1;
-    let stage = await manager.get.currentStage(id);
-    let values = await manager.get.stageData(stage.id);
+    let stage = await manager.get.currentStage(3);
+    let values = await manager.get.stageData(id);
     console.log(stage)
     
     let winnerBracketOffset = values.round.filter(round => round.group_id == 0).length
