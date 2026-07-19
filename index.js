@@ -78,7 +78,7 @@ app.put('/api/update', async (req, res)=>{
         opponent1: { result: team1>team2 ? 'win' : 'loss'},
         opponent2: { result: team2>team1 ? 'win' : 'loss'}
     })
-    res.json(manager.get.currentStage(0))
+    res.json("Done")
 
 })
 
