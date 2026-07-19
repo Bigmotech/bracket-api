@@ -57,14 +57,14 @@ app.get('/api/bracket/:id', async (req, res) => {
 
 app.put('/api/update', async (req, res)=>{
     const { id, group, round, matchNumber, team1, team2 } = req.body;
-    res.send(id);
+    
     let groupOffset = Number.parseInt(group) - 1;
     let roundOffset = round - 1;
     let stage = await manager.get.currentStage(id);
     let values = await manager.get.stageData(stage.id);
     
     let winnerBracketOffset = values.round.filter(round => round.group_id == 0).length
-
+    
     if(group > 0)
         roundOffset += winnerBracketOffset
     res.json("Done")
@@ -79,7 +79,7 @@ app.put('/api/update', async (req, res)=>{
         opponent1: { result: team1>team2 ? 'win' : 'loss'},
         opponent2: { result: team2>team1 ? 'win' : 'loss'}
     })
-
+    res.send("Update");
 })
 
 app.post('/api/clear', async (req,res)=>{
