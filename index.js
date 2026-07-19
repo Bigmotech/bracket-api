@@ -60,6 +60,7 @@ app.put('/api/update', async (req, res)=>{
     const { id, group, round, matchNumber, team1, team2 } = req.body;
     console.log("Something so new it has to pack up")
     console.log(id);
+    console.log("This is after id")
     let groupOffset = Number.parseInt(group) - 1;
     let roundOffset = round - 1;
     let stage = await manager.get.currentStage(id);
